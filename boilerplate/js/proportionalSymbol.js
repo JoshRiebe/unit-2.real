@@ -18,7 +18,6 @@ function createMap(){
     getData(myMap3);
 };
 
-//function to calculate the minimum population value for later use
 function calculateMinValue(data){
     //create empty array to store all data values
     var allValues = [];
@@ -26,16 +25,17 @@ function calculateMinValue(data){
     for(var city of data.features){
         //loop through each year
         for(var year = 1950; year <= 2010; year+=10){
-            //get population for current year, and strips commas from the stringed numbers and converts them to numbers to be used for calculations
+            //get population for current year
             var value = Number(city.properties[String(year)].replace(/,/g, ""));
             
             //add value to array
             allValues.push(value);
         }
     };
+    console.log(Math.min(...allValues));
     //get minimum value of our array
     var minValue = Math.min(...allValues);
-    //returns minValue for later use
+    
     return minValue;
 };
 
@@ -43,16 +43,19 @@ function calculateMinValue(data){
 function calcPropRadius(attValue) {
     //constant factor adjusts symbol sizes evenly
     var minRadius = 5;
+    /* minValue = 63000; */
     //Flannery Apperance Compensation formula
     var radius = 1.0083 * Math.pow(attValue/minValue,0.5715) * minRadius;
-    //returns radius for future use
+    
     return radius;
 };
 
 //function to convert markers to circle markers
 function pointToLayer(feature, latlng, attributes){
-    //determine attribute to visualize with proportional symbol
+    ////STEP #4: determine attribute to visualize with proportional symbol
     var attribute = attributes[0];
+    
+
     //create marker options
     var options = {
         fillColor: "#ff7800",
@@ -61,7 +64,7 @@ function pointToLayer(feature, latlng, attributes){
         opacity: 1,
         fillOpacity: 0.8
     };
-    //determine value for selected attribute for each feature and strip stringed numbers of their commas and convert them to numbers
+    //determine value for selected attribute for each feature
     var attValue = Number(feature.properties[attribute].replace(/,/g, ""));
     
     //give each feature's circle marker a radius based on attribute value
@@ -94,7 +97,7 @@ function createPropSymbols(data, attributes){
 
 };
 
-//function to create new sequence controls
+////Step 1: Create new sequence controls
 function createSequenceControls(attributes){
     //create range input element (slider)
     $('#panel').append('<input class="range-slider" type="range">');
@@ -107,48 +110,53 @@ function createSequenceControls(attributes){
         step: 1
     });
     
-    //input listener for slider and call for updatePropSymbols function
+    //Step 5: input listener for slider
     $('.range-slider').on('input', function(){
         var index = $(this).val();        
         console.log(index);
         updatePropSymbols(attributes[index]);
     });
-    //block of code that synchronizes the arrows with the sequencing
+
     $('#panel').append('<button class="step" id="reverse">Reverse</button>');
     $('#panel').append('<button class="step" id="forward">Forward</button>');
+    //replace button content with images
     $('#reverse').html('<img src="img/noun_leftarrow.png">');
     $('#forward').html('<img src="img/noun_rightarrow.png">');
     
-    //function to allow the clicking of the arrows to move through the years
+
     $('.step').click(function(){
         var index = $('.range-slider').val();
-        //index increases when forward arrow is clicked
+
         if ($(this).attr('id') == 'forward'){
             index++;
+            //Step 7: if past the last attribute, wrap around to first attribute
             index = index > 6 ? 0 : index;
-        
-        //index decreases when reverse arrow is clicked
         } else if ($(this).attr('id') == 'reverse'){
             index--;
+            //Step 7: if past the first attribute, wrap around to last attribute
             index = index < 0 ? 6 : index;
         };
 
-        //update slider through updatePropSymbols function
+        //Step 8: update slider
         $('.range-slider').val(index);
+        console.log(attributes[index]);
         updatePropSymbols(attributes[index]);
     });
+
+    
 };
 
-//Resize proportional symbols according to new attribute values
+//Step 10: Resize proportional symbols according to new attribute values
 function updatePropSymbols(attribute){
     myMap3.eachLayer(function(layer){
         if (layer.feature && layer.feature.properties[attribute]){
             if (layer.feature && layer.feature.properties[attribute]){
-                //access feature properties and strip commas from stringed numbers and convert them to numbers
+                //access feature properties
                 var props = layer.feature.properties;
                 var propsTwo = Number(props[attribute].replace(/,/g, ""));
                 //update each feature's radius based on new attribute values
                 var radius = (calcPropRadius(propsTwo));
+                console.log(radius);
                 layer.setRadius(radius);
     
                 //add city to popup content string
@@ -166,7 +174,7 @@ function updatePropSymbols(attribute){
     });
 }; 
 
-//function to build an attributes array from the data
+//Above Example 3.10...Step 3: build an attributes array from the data
 function processData(data){
     //empty array to hold attributes
     var attributes = [];
@@ -176,24 +184,22 @@ function processData(data){
 
     //push each attribute name into attributes array
     for (var attribute in properties){
-        //takes attributes that don't have header "City"
+        //only take attributes with population values
         if (attribute != "City"){
             attributes.push(attribute);
         }
     };
-    //returns attributes for future use
+    
     return attributes;
 };
 
 
-//function to import GeoJSON data
+//import GeoJSON data
 function getData(){
     $.ajax("data/activity5.geojson", {
         dataType: "json",
         success: function(response){
-            //calls processData function to build array from data
             var attributes = processData(response);
-                //assigns minValue for later smoother use
                 minValue = calculateMinValue(response);
         //call function to create proportional symbols and UI elements
             createPropSymbols(response, attributes);         
