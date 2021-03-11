@@ -638,42 +638,56 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	margin-left: -12px;
 	border-right-color: #fff;
 	}
-#mapid { 
-	height: 400px;    
-    width: 80%;
-    display: inline-block;
+
+/* #mapid { 
+	height: 500px;    
+	width: 100%;
+	display: inline-block;
 }
 
-#panel {    
-	width: 25%;    
-	padding: 20px;
-	display: inline-block;
-	vertical-align: top;
+.sequence-control-container {    
+	width: 350px;
+	height: 30px;
+	background-color: rgba(255, 255, 255, 0.8);    
+	padding: 10px;
 	text-align: center;
-	line-height: 42px;
+	line-height: 45px;
+	border: solid gray 1px;
+}
+
+.legend-control-container {
+	width: 200px;
+	height: 100px;
+	background-color: rgba(255, 255, 255, 0.8);    
+	padding: 10px;
+	text-align: center;
+	line-height: 45px;
+	border: solid gray 1px;
 }
 
 .range-slider {  
-    width: 55%;  
+	width: 250px;  
 }  
 
 .step {  
-    width: 20%;  
+	width: 40px;  
 }  
 
 .step img {  
-    width: 100%;  
+	width: 100%;
+	height: auto;
 }  
 
 
 #forward {  
-    float: right;  
+	float: right;  
 }  
 
 #reverse {  
-    float: left;  
+	float: left;  
 }
 
 .leaflet-popup-content p {
-    margin: 0.2em 0;
+	margin: 0.2em 0;
 }
+ */

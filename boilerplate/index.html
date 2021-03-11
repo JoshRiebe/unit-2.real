@@ -6,34 +6,55 @@
             <title></title>
 
         <!--put your external stylesheet links here-->
-        <!-- <link rel="stylesheet" href="css/style.css"> -->
-        <link rel="stylesheet" href="lib/leaflet.css">
- 
-        <!--[if IE<9]>
-            <link rel="stylesheet" href="css/style.ie.css">
-        <![endif]-->
-
-         <!--you can also place internal styles here;
-             place these within <style> tags-->
+        <link rel="stylesheet" href="lib/Leaflet/leaflet.css">
+        <link rel="stylesheet" href="css/style.css">
         
     </head>
 
     <body>
-        <!--put your initial page content here-->
+        <div class="row">
+            <div id="title">
+                <!--title of the website-->
+                <center><h1>World's Busiest Airports' Passenger Traffic Change Before and During COVID-19 Pandemic</h1></center>
+            </div>
+        </div>
+        <!--map-->
         <div id="mapid"></div>
-        <div id="panel"></div>
-        <div id="forward"></div>
-        <div id="reverse"></div>
-        <!--you can also use this space for internal scripts;
-        place these within <script> tags-->
+        
+        <div class="row">
+            <!--section about the pandemic and introduction to the map-->
+            <h3>Unprecedented Times</h3>
+            <p>Airline travel has revolutionized how people interact with each other. One can fly to the other side of the world within 24 hours, depending on the route, whereas a couple centuries ago, it would take weeks, if not months. <a href="https://www.travelweekly.com/Travel-News/Airline-News/Air-travel-growth-slowed-worldwide-in-2019">Global air travel</a> has grown steadily the past decade, even though 2019 saw a slow pace for the previous ten years. And then <em>COVID-19</em> began to spread. What started as something mainly in East Asia began to spread around the world, without a doubt, by the help of airline travel. Click the airplane icons or use the slider to see the changes to passenger traffic of 15 of the busiest airports in the world from October 2019 to June 2020. Click on the various symbols to see what each individual airport's passenger statistics were for each given month and how they compare to other airports.</p>
+            <!--section including all of the data-->
+            <h4>Passenger Traffic Data</h4>
+            <p>Airports were selected for being one of the 20 busiest airports in the world in 2019, as shown by <a href="https://en.wikipedia.org/wiki/List_of_busiest_airports_by_passenger_traffic">Wikipedia</a>. The airports used in this map include: </p> 
+            <ul>
+                <li><a href="https://www.atl.com/business-information/statistics/">Hartsfield-Jackson Atlanta International Airport</a></li>
+                <li><a href="https://www.ceicdata.com/en/china/airport-passenger-throughput-monthly/airport-passenger-throughput-beijing-capital">Beijing Capital International Airport</a></li>
+                <li><a href="https://www.lawa.org/lawa-investor-relations/statistics-for-lax/volume-of-air-traffic">Los Angeles International Airport</a></li>
+                <li><a href="https://www.flychicago.com/business/CDA/factsfigures/Pages/airtraffic.aspx">O'Hare International Airport</a></li>
+                <li><a href="https://www.heathrow.com/company/investor-centre/reports/traffic-statistics">Heathrow Airport</a></li>
+                <li><a href="https://www.ceicdata.com/en/china/airport-passenger-throughput-monthly/airport-passenger-throughput-shanghai-pudong">Shanghai Pudong International Airport</a></li>
+                <li><a href="https://www.parisaeroport.fr/en/group/finance/investor-relations/traffic">Charles de Gaulle Airport</a></li>
+                <li><a href="https://www.schiphol.nl/en/schiphol-group/page/transport-and-traffic-statistics/">Amsterdam Airport Schiphol</a></li>
+                <li><a href="https://www.hongkongairport.com/en/the-airport/hkia-at-a-glance/fact-figures.page">Hong Kong International Airport</a></li>
+                <li><a href="https://www.airport.kr/co/en/cpr/statisticCategoryOfDay.do">Seoul Incheon International Airport</a></li>
+                <li><a href="https://www.fraport.com/en/investors/traffic-figures.html">Frankfurt Airport</a></li>
+                <li><a href="https://www.flydenver.com/about/financials/passenger_traffic?date_filter%5Bvalue%5D%5Byear%5D=2019">Denver International Airport</a></li>
+                <li><a href="https://www.aai.aero/en/business-opportunities/aai-traffic-news">Indira Gandhi International Airport</a></li>
+                <li><a href="https://data.gov.sg/dataset?q=Changi+Airport">Singapore Changi Airport</a></li>
+                <li><a href="http://aot.listedcompany.com/transport.html">Suvarnabhumi Airport</a></li>
+            </ul>
+            <p>The airports in the top 20 list not included are Dubai International Airport and Tokyo Haneda Airport, which data could not be acquired for the time period, and Guangzhou Baiyun International Airport, Dallas/Fort Worth International Airport and John F. Kennedy International Airport were not included to reduce the symbol clutter in the US and East Asia.</p>
+            <br>
+            <!--author and date of completion-->
+            <p><em>Updated by Josh Riebe, March 10, 2021</em></p>
+        </div>
 
+        
         <!--put your external script links here-->
         <script type="text/javascript" src="lib/jQuery.js"></script>
-        <script type="text/javascript" src="lib/leaflet-src.js"></script>
-<!--        <script type="text/javascript" src="js/adaptedTutorial.js"></script>
-        <script type="text/javascript" src="js/geojsonTutorial.js"></script>
-        <script type="text/javascript" src="js/quickstartTutorial.js"></script>
- -->        <script type="text/javascript" src="js/main.js"></script>
-        <!-- <script type="text/javascript" src="js/proportionalSymbol.js"></script> -->
+        <script type="text/javascript" src="lib/Leaflet/leaflet-src.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
     </body>
 </html>

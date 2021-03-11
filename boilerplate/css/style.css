@@ -1,0 +1,78 @@
+/* defines font for everything under body */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* defines characteristics for the map */
+#mapid { 
+	height: 475px;    
+    width: 100%;
+    display: inline-block;
+}
+
+.leaflet-popup-content p {
+    margin: 0.2em 0;
+}
+/* defines characteristics for the sequencing slider and arrows */
+.sequence-control-container {    
+	width: 350px;
+	height: 30px;
+	background-color:  rgba(236, 226, 226, 0.9);
+    border: solid gray 1px;
+	padding: 10px;
+	text-align: center;
+	line-height: 45px;
+}
+
+.range-slider {  
+    width: 250px;  
+    height: auto;
+}  
+
+.step {  
+    width: 40px;  
+}  
+
+.step img {  
+    width: 100%;
+	height: auto;
+}  
+
+#forward {  
+    float: right; 
+    background-color: #ede545; 
+}  
+
+#reverse {  
+    float: left;  
+    background-color: #ede545;
+}
+/* defines characteristics for the legend */
+.legend-control-container {
+	width: 200px;
+	height: 125px;
+	background-color: rgba(236, 226, 226, 0.9);    
+	padding: 10px;
+	text-align: center;
+	line-height: 30px;
+	border: solid gray 1px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+}
+/* overrides the font size for these strings in the legend */
+#max-text,
+#mean-text,
+#min-text {
+    font-size: 10px;
+    font-weight: normal;
+}
+
+.legend-control-container p {
+    margin: 0;
+}
+/* defines font size and line height for the paragraph compnents */
+p {
+    font-size: 14px;
+    line-height: 1.5;
+}
